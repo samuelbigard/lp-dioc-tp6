@@ -12,12 +12,41 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface, \Serializable
 {
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
     private $id;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
     private $email;
+
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
     private $firstname;
+
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
     private $lastname;
+
+    /**
+     * @ORM\Column(type="string", length=64)
+     */
     private $password;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
     private $isAuthor = false;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Article", mappedBy="author")
+     */
     private $articles;
 
     // Fixme

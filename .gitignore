@@ -4,6 +4,7 @@
 /public/bundles/
 /var/
 /vendor/
+/.idea/
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
@@ -15,5 +16,5 @@
 ###< symfony/web-server-bundle ###
 
 ###> phpunit/phpunit ###
-/phpunit.xml
+
 ###< phpunit/phpunit ###
