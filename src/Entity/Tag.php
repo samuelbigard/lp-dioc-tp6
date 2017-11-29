@@ -18,22 +18,24 @@ class Tag
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column()
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=300)
+     * @ORM\Column()
      */
     private $slug;
 
     /**
      * Tag constructor.
+     * @param $name
+     * @param $slug
      */
-    public function __construct()
+    public function __construct($name, $slug)
     {
-        $slugGenerator = new SlugGenerator();
-        $this->slug = $slugGenerator->generate($this->name);
+        $this->name = $name;
+        $this->slug = $slug;
     }
 
 

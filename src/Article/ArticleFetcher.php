@@ -7,11 +7,21 @@ use Doctrine\Bundle\DoctrineBundle\Registry;
 
 class ArticleFetcher
 {
+    public $registry;
+
+    /**
+     * ArticleFetcher constructor.
+     * @param $registry
+     */
+    public function __construct(Registry $registry)
+    {
+        $this->registry = $registry;
+    }
+
     public function fetch() : array
     {
-        // Retourne les 10 derniers articles.
-        // La limit (ici 10) doit provenir d'une variable d'env.
-
-        return [];
+        $repo = $this->registry->getManager()->getRepository(Article::class);
+        $articles = $repo->findBy(array(),array('createdAt' => "DESC"),10);
+        return $articles;
     }
 }

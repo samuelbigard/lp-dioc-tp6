@@ -2,6 +2,8 @@
 
 {% block body %}
     <ul>
-        <li><a href="#">Titre de l'article - 5</a></li>
+        {% for article in articles %}
+        <li><a href="{{ path("article_show", {slug: article.slug}) }}">{{ article.title }} - {{ article.countView }}</a></li>
+        {% endfor %}
     </ul>
 {% endblock %}

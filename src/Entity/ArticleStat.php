@@ -21,7 +21,7 @@ class ArticleStat
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column()
      */
     private $action;
 
@@ -36,7 +36,7 @@ class ArticleStat
     private $date;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column()
      */
     private $ip;
 

@@ -17,11 +17,22 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('title')
+            ->add('content', TextareaType::class)
+            ->add('tags',
+                EntityType::class,
+                [
+                    'class' => Tag::class,
+                    'choice_label' => 'name',
+                    'multiple' => true,
+                    'expanded' => true,
+                ])
             ->add('submit', SubmitType::class)
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
+        $resolver->setDefaults(array('data_class' => Article::class));
     }
 }

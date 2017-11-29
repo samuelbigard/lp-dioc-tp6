@@ -20,22 +20,22 @@ class User implements UserInterface, \Serializable
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column()
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column()
      */
     private $firstname;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column()
      */
     private $lastname;
 
     /**
-     * @ORM\Column(type="string", length=64)
+     * @ORM\Column()
      */
     private $password;
 
@@ -49,7 +49,19 @@ class User implements UserInterface, \Serializable
      */
     private $articles;
 
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        $this->articles = new ArrayCollection();
+    }
+
     // Fixme
+
+    public function isAuthor(){
+        return $this->isAuthor;
+    }
 
     public function getRoles()
     {
@@ -105,4 +117,109 @@ class User implements UserInterface, \Serializable
     {
         return $this->password;
     }
+
+    /**
+     * @param mixed $password
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * @param mixed $firstname
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * @param mixed $lastname
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsAuthor()
+    {
+        return $this->isAuthor;
+    }
+
+    /**
+     * @param mixed $isAuthor
+     */
+    public function setIsAuthor($isAuthor)
+    {
+        $this->isAuthor = $isAuthor;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getArticles()
+    {
+        return $this->articles;
+    }
+
+    /**
+     * @param mixed $articles
+     */
+    public function setArticles($articles)
+    {
+        $this->articles = $articles;
+    }
+
 }

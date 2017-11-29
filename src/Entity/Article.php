@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\Slug\SlugGenerator;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -19,17 +18,17 @@ class Article
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column()
      */
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=150)
+     * @ORM\Column()
      */
     private $slug;
 
     /**
-     * @ORM\Column(type="string", length=300)
+     * @ORM\Column()
      */
     private $content;
 
@@ -63,8 +62,9 @@ class Article
      */
     public function __construct()
     {
-        $slugGenerator = new SlugGenerator();
-        $this->slug = $slugGenerator->generate($this->title);
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
+        $this->tags = new ArrayCollection();
     }
 
 
